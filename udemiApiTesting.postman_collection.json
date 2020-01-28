@@ -1,0 +1,459 @@
+{
+	"info": {
+		"_postman_id": "7169c4a3-33de-4048-b83e-531d722482c8",
+		"name": "udemiApiTesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://swapi.co/api/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "21b703f3-8395-4d98-b364-ab9ca1b8fd33",
+						"exec": [
+							"var  data = JSON.parse(responseBody);",
+							"",
+							"var schema = {",
+							"    //specify the type of object",
+							"    \"type\": \"object\",",
+							"    //specify required properties",
+							"    \"required\": [\"people\", \"planets\", \"films\", \"species\", \"vehicles\", \"starships\"],",
+							"    //describe the properties",
+							"    \"properties\": {",
+							"        \"people\": {\"type\":\"string\"},",
+							"        \"planets\": {\"type\":\"string\"},",
+							"        \"films\": {\"type\":\"string\"},",
+							"        \"species\": {\"type\":\"string\"},",
+							"        \"vehicles\": {\"type\":\"string\"},",
+							"        \"starships\": {\"type\":\"string\"},",
+							"    }",
+							"    ",
+							"};",
+							"",
+							"pm.test(\"Body is correct\", function() {",
+							"    pm.expect(tv4.validate(data, schema)).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.co/api/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://swapi.co/api/people/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ce7a6d5-7984-4659-a427-926820f68331",
+						"exec": [
+							"var data =JSON.parse(responseBody);",
+							"",
+							"var schema = {",
+							"    \"type\": \"object\",",
+							"    \"required\": [\"name\", \"homeworld\", \"films\", \"species\", \"vehicles\", \"starships\"],",
+							"    \"property\": {",
+							"        \"name\": {\"type\":\"string\"},",
+							"        \"homeworld\": {\"type\":\"string\"},",
+							"        \"films\": {",
+							"            \"type\":\"array\",",
+							"            \"items\": {\"type\":\"string\"}",
+							"        },",
+							"        \"species\":{",
+							"            \"type\":\"array\",",
+							"            \"items\": {\"type\":\"string\"}",
+							"    },",
+							"    \"vehicles\":{",
+							"            \"type\":\"array\",",
+							"            \"items\": {\"type\":\"string\"},",
+							"    },",
+							"    \"starships\":{",
+							"            \"type\":\"array\",",
+							"            \"items\": {\"type\":\"string\"}",
+							"},",
+							"}",
+							"};",
+							"pm.test(\"Body is correct\", function() {",
+							"    pm.expect(tv4.validate(data, schema)).to.be.true;",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.co/api/people/1",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"people",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io",
+					"protocol": "https",
+					"host": [
+						"1b856171-b41e-4cdb-aeaf-ec43acd690fd",
+						"mock",
+						"pstmn",
+						"io"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Sergei\"}"
+						},
+						"url": {
+							"raw": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io/action",
+							"protocol": "https",
+							"host": [
+								"1b856171-b41e-4cdb-aeaf-ec43acd690fd",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"action"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 Jan 2020 22:59:25 GMT"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a4-rWRPj2mTYaJV0RsNNd+2EgzcJ9Q\""
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=32446519b822b5c5"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=486a959b12838ddc"
+						},
+						{
+							"key": "Content-Length",
+							"value": "102"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"satus\": {\n        \"name\": \"Sergei\",\n        \"satus\":\"Created\"\n        \"header\": \"You need an example\",\n        \"message\": \"Sucsess.\"\n    }\n}"
+				},
+				{
+					"name": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io",
+							"protocol": "https",
+							"host": [
+								"1b856171-b41e-4cdb-aeaf-ec43acd690fd",
+								"mock",
+								"pstmn",
+								"io"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 Jan 2020 22:56:33 GMT"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a4-rWRPj2mTYaJV0RsNNd+2EgzcJ9Q\""
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=32446519b822b5c5"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=486a959b12838ddc"
+						},
+						{
+							"key": "Content-Length",
+							"value": "139"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"satus\": {\n        \"name\": \"test\",\n        \"header\": \"You need an example\",\n        \"message\": \"Sucsess.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Sergei\"}"
+				},
+				"url": {
+					"raw": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io/action",
+					"protocol": "https",
+					"host": [
+						"1b856171-b41e-4cdb-aeaf-ec43acd690fd",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"action"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io",
+							"protocol": "https",
+							"host": [
+								"1b856171-b41e-4cdb-aeaf-ec43acd690fd",
+								"mock",
+								"pstmn",
+								"io"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 Jan 2020 22:56:33 GMT"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a4-rWRPj2mTYaJV0RsNNd+2EgzcJ9Q\""
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=32446519b822b5c5"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=486a959b12838ddc"
+						},
+						{
+							"key": "Content-Length",
+							"value": "139"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"satus\": {\n        \"name\": \"test\",\n        \"header\": \"You need an example\",\n        \"message\": \"Sucsess.\"\n    }\n}"
+				},
+				{
+					"name": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Sergei\"}"
+						},
+						"url": {
+							"raw": "https://1b856171-b41e-4cdb-aeaf-ec43acd690fd.mock.pstmn.io/action",
+							"protocol": "https",
+							"host": [
+								"1b856171-b41e-4cdb-aeaf-ec43acd690fd",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"action"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 Jan 2020 22:59:25 GMT"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a4-rWRPj2mTYaJV0RsNNd+2EgzcJ9Q\""
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=32446519b822b5c5"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=486a959b12838ddc"
+						},
+						{
+							"key": "Content-Length",
+							"value": "102"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"satus\": {\n        \"name\": \"Sergei\",\n        \"satus\":\"Created\"\n        \"header\": \"You need an example\",\n        \"message\": \"Sucsess.\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
